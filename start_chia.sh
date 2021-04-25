@@ -49,7 +49,7 @@ tmux send -t $SESSION_NAME "cd $CHIA_DIR" ENTER
 if [ "$DRY_RUN" = true ]
 then
 	echo "====== execute command ======"
-	echo ". ./activate && sleep ${THREAD}h && chia plots create -k 32 -b 6500 -e -r 2 -u 128 -n 8 -t /mnt/ssd0/tmp${THREAD} -d /mnt/hdd2/chia_final |tee /home/warren/Documents/chialogs/chia${THREAD}.log"
+	echo ". ./activate && sleep ${i}h && chia plots create -k 32 -b 6500 -r 2 -u 128 -n 8 -t /mnt/ssd0/tmp${i} -d /mnt/hdd2/chia_final |tee /home/warren/Documents/chialogs/chia${i}.log"
 	echo "============ end ============"
 	tmux kill-session -t $SESSION_NAME
 else
@@ -57,7 +57,7 @@ else
 	rm -r /mnt/ssd/tmp$ID
 	mkdir -p /mnt/ssd0/tmp$ID
 	mkdir -p $CHIA_DIR/chialogs
-	tmux send -t $SESSION_NAME ". ./activate && sleep ${THREAD}h && chia plots create -k 32 -b 6500 -e -r 2 -u 128 -n 8 -t /mnt/ssd0/tmp${THREAD} -d /mnt/hdd2/chia_final |tee ${CHIA_DIR}/chialogs/chia${THREAD}.log" ENTER
+	tmux send -t $SESSION_NAME ". ./activate && sleep ${i}h && chia plots create -k 32 -b 6500 -r 2 -u 128 -n 8 -t /mnt/ssd0/tmp${i} -d /mnt/hdd2/chia_final |tee ${CHIA_DIR}/chialogs/chia${i}.log" ENTER
 fi
 
 done
